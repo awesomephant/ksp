@@ -1,0 +1,22 @@
+*{
+	@include box-sizing(border-box);
+}
+
+body {
+	font-family: $font-primary;
+}
+
+p a:link, p a:visited {
+	color: inherit;
+	opacity: .9;
+	text-decoration: underline;
+	
+	
+	&:hover {
+		opacity: 1;
+	}
+}
+
+p {
+	line-height: 1.5em;
+}

@@ -1,0 +1,463 @@
+.global-banner {
+	height: 600px;
+	//background-image: url('../banner.jpg');
+	background-attachment: fixed;
+	position: relative;
+	h1 {
+		background-position: 3em 3em;
+		color: $black;
+		padding-left: 1.2em;
+		margin-left: 4%;
+		background: url(../logo-black.svg) no-repeat;
+		background-size: 1em;
+		background-position: 0 .2em;
+	}
+	
+	.latest {
+		position: absolute;
+		right: 0;
+		top: 0;
+		padding: 1.5em;
+		color: $black;
+		background: white;
+		font-size: 1em;
+		width: 100%;
+		
+		h2 {
+			font-weight: bold;
+		}
+		@include bp(l){
+			width: 33%;
+			top: 1em;
+			@include animation(in-left $slow ease-in-out both);
+			@include animation-delay(4s);
+		}
+		line-height: 1.35em;
+		&:hover, &:focus {
+			background: darken($blue, 5);
+		}
+		&:before {
+		//content: '';
+		border-width: 2em;
+		border-color: transparent;
+		border-style: solid;
+		border-right-color: $yellow;
+		position: absolute;
+		left: -3.9em;
+		}
+		
+	}
+}
+
+
+svg {
+  width: 80%;
+  margin-left: 2%;
+  display: block;
+  height: 450px;
+  margin-top: 2rem;
+}
+
+.bubble {
+  opacity: 0;
+  @include animation('fade-in 1s forwards, pop 3s ease infinite alternate');
+}
+
+@for $i from 0 to 36 {
+  .bubble:nth-child(#{$i}){
+    @include animation-delay($i * .1s);
+  }
+}
+
+h1 {
+  font-family: helvetica, sans-serif;
+  font-weight: bold;
+  letter-spacing: -.06em;
+  font-size: 4rem;
+}
+
+.header-wraper {
+  position: relative;
+}
+
+.global-nav {
+	background-color: white;
+	background-image: url(../logo-red.svg);
+	background-size: 2rem;
+	background-repeat: no-repeat;
+	background-position: 1rem;
+	padding-left: 4%;
+	border-bottom: 1px solid $gray-light;
+	a {
+		display: inline-block;
+		text-transform: uppercase;
+		letter-spacing: .06em;
+		padding-top: .5em;
+		padding-bottom: .5em;
+		margin: .5em;
+		@include transition($fast);
+		font-weight: bold;
+		text-decoration: none;
+		position: relative;
+		color: $red;
+		&.highlight {
+			color: white;
+			background: $red;
+			padding-left: .5em;
+			padding-right: .5em;
+			
+			&:hover, &:focus {
+				@include animation(tada 1s);
+			}
+			&:after {
+				content: none;
+			}
+		}
+		&:after {
+			content: '';
+			@include transition($fast);
+			opacity: 0;
+			background: $red;
+			position: absolute;
+			left: 0;
+			right:0;
+			height: .2em;
+		}
+		
+		&:after {
+			bottom: -.8em;
+		}
+		&:hover, &:focus {
+			&:before, &:after {
+				opacity: 1;
+			}
+			&:after {
+				bottom: .1em;
+			}
+			&:before {
+				top: .5em;
+			}
+		}
+	}
+}
+
+main, .global-footer {
+	padding: 1em;
+	@include bp(m){
+		padding: 2em;
+	}
+	@include bp(l){
+		padding: 4em;
+	}
+}
+
+.intro {
+	@include bp(m){
+		font-size: 1.5em;
+	}
+	
+	@include bp(l){
+		font-size: 2em;
+	}
+	font-family: helvetica, lato;
+	font-weight: 800;
+	color: $black;
+	line-height: 1.55em;
+	margin-bottom: 2em;
+	
+	em {
+		background: $yellow;
+	}
+	
+	&:before {
+		content: '';
+		background: $black;
+		width: 20%;
+		height: 6px;
+		display: block;
+		margin-bottom: 1em;
+	}
+}
+
+.module {
+	@include bp(m){
+		width: 50%;
+	}
+	display: inline-block;
+	margin-right: 1%;
+	padding-right: 1em;
+	padding-top: 1em;
+	font-size: 1.2em;
+	color: $black;
+	line-height: 1.55em;
+	margin-bottom: 2em;
+}
+
+.modules h2 {
+	font-weight: bold;
+}
+
+
+
+.global-footer {
+	clear: both;
+	background-color: $gray-lighter;
+	@include background-image(linear-gradient(left, $red, $red 25%, $blue 25%, $blue 50%, $yellow 50%, $yellow 75%, $green 75%));
+	background-size: 100% 10px;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	
+	a {
+		color: $blue;
+		padding: .5em;
+	}
+}
+
+.page-header {	padding: 5%;
+	padding-bottom: 10%;
+	background: $red;
+	font-weight: bold;
+	color: white;
+	background-size: cover;
+	background-attachment: fixed;
+
+	&.projects {
+		background-image: url(http://31.media.tumblr.com/fe341bc8e2f82db9e03cbb5a4323a84f/tumblr_mq7ejb3POL1st5lhmo1_1280.jpg);
+	}
+	
+	&.contact {
+		background-image: url(http://24.media.tumblr.com/27827fe71592e2abc996a08d8d3c3fa1/tumblr_mpp6f50W261st5lhmo1_1280.jpg);
+	}
+	&.team {
+background-image: url(http://31.media.tumblr.com/89766342a242f529b8889240342898cf/tumblr_mp6s4dzqHA1st5lhmo1_1280.jpg);
+}
+	h1 {
+		font-size: 4em;
+		padding-bottom: .2em;
+	}
+	
+	h2 {
+		font-size: 2em;
+		opacity: .8;
+	}
+}
+
+.timeline {
+	@include background-image(linear-gradient(left center , transparent 49.5%, rgb(233, 238, 239) 49.5%, rgb(233, 238, 239) 50.5%, transparent 50.5%));
+	time {
+		margin-left: 0em;
+		padding: .5em;
+		@include bp(m){padding-left: 0;}
+		font-weight: bold;
+		color: white;
+		background: $blue;
+		display: inline-block;
+		position: relative;		
+		@include bp(m){
+		margin-left: 12em;
+			&:after {
+				@include triangle(right, 1em, $blue);
+				position: absolute;
+				left: -2em;
+				top: 0;
+			}
+		}
+	}
+	
+	article {
+		@extend %group;
+		padding: 1em;
+		display: block;
+		background: white;
+		float: left;
+		border: 1px solid $gray-light;
+		border-bottom-width: 2px;
+		width: 100%;
+		@include bp(m){
+			width: 40%;
+		}
+		margin-bottom: 4em;
+	}
+	
+	img {
+		width: 100%;
+	}
+	
+	li {
+		position: relative;
+		clear: both;
+		&:nth-child(2n){
+			article {
+				@include bp(m){
+					float: right;
+					margin-left: 8em;
+				}
+			}
+			time {
+				@include bp(m){
+					position: absolute;
+					right: 56%;
+				}
+				padding-left: .5em;
+				@include bp(m){padding-right: 0;}
+				@include bp(m){
+					&:after {
+						@include triangle(left, 1em, $blue);
+						left: auto;
+						right: -2em;
+						top: 0;
+					}
+				}
+			}
+		}
+		&:before {
+			content: '';
+			width: 4em;
+			height: 4em;
+			display: block;
+			position: absolute;
+			top: -1em;
+			left: 50%;
+			margin-left: -2em;
+			border-radius: 4em;
+			@include background-image(radial-gradient(white 30%, $gray 30%, $gray 50%, white 50%));
+		}
+	}
+	
+	h2 {
+		font-weight: bold;
+		font-size: 1.5em;
+		margin-bottom: .5em;
+	}
+}
+
+input, textarea {
+	padding: 1em;
+	border: 1px solid $gray;
+	width: 100%;
+	margin-bottom: 1em;
+}
+
+textarea{
+	font-size: 1.2em;
+	line-height: 1.55em;
+}
+
+[type=email]{
+	background-image: url(../check.svg);
+	@include transition($fast background-position);
+	background-position: right -3em center;
+	background-repeat: no-repeat;
+	&:valid {
+		background-position: right .5em center;
+	}
+}
+
+label {
+	display: block;
+}
+
+
+.button {
+	display: block;
+	background: $red;
+	font-weight: bold;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	border: none;
+	letter-spacing: .05em;
+	color: white;
+	
+	&:hover, &:focus {
+		background: lighten($red, 5);
+		cursor: pointer;
+		border-radius: .2em;
+	}
+}
+
+.team {
+
+	.name {
+		font-weight: bold;
+		margin-bottom: .5em;
+	}
+	
+	img {
+		width: 100%;
+		@include transform2d(translateX(0%));
+		@include transition($fast);
+		filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+	}
+	
+	li {
+		display: inline-block;
+		position: relative;
+		margin: .5em;
+		width: 45%;
+		cursor: pointer;
+		@include bp(m){
+			width: 30%;
+		}
+		@include perspective(1700px);
+		@include perspective-origin(left);
+		
+		&:hover, &:focus {
+			figcaption {
+				@include transform3d(rotateY(0deg));
+				opacity: 1;
+			}
+			img {
+				@include transform2d(translateX(20%));
+			}
+		}
+	}
+	
+	figure {
+	@include transform-style(preserve-3d);
+	overflow: hidden;
+		
+	}
+	
+	figcaption {
+		@include transition($fast);
+		opacity: 0;
+		background: $yellow;
+		padding: 1em;
+		position: absolute;
+		top: 0;
+		left: 0;
+		
+		width: 100%;
+		@include bp(m){
+			width: 50%;
+		}
+		bottom: 0;
+		@include backface-visibility(hidden);
+		@include transform3d(rotateY(-90deg));
+		@include transform-origin(0 0);
+	}
+}
+
+.team-social {
+	@extend .button-secondary;
+	position: absolute;
+	bottom: 1em;
+	display: block;
+}
+
+.button-secondary{	text-decoration: none;
+	padding: .6em;
+	color: $black;
+	font-weight: bold;
+	border: .3em solid $black;
+	
+	&:hover, &:focus {
+		background: rgba(white, .4);
+	}
+	
+	&:active {
+		border-color: $blue;
+		background: $blue;
+		color: white;
+	}
+}
