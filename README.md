@@ -1,3 +1,3 @@
 #ksp - visual assets
 
-Hier sind alle offiziellen Logos, Schriften und Farben, die das Konstanzer Schülerparlament repräsentieren.
+Alle offiziellen Logos, Schriften und Farben für das Konstanzer Schülerparlament.
